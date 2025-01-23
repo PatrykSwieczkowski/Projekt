@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Losowe Przepisy</title>
+</head>
+<body>
+<h1>Losowe Przepisy</h1>
+
+<div th:if="${#lists.isEmpty(recipes)}">
+    <p>Brak losowych przepisów do wyświetlenia.</p>
+</div>
+
+<div th:if="${not #lists.isEmpty(recipes)}">
+    <ul>
+        <li th:each="recipe : ${recipes}">
+            <h3 th:text="${recipe.title}"></h3>
+            <img th:src="${recipe.image}" alt="Recipe Image"/>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Przepisy na składniki</title>
+</head>
+<body>
+<h1>Przepisy na składniki</h1>
+<p>Wyszukiwane składniki: <strong th:text="${ingredients}"></strong></p>
+
+<h2>Lista przepisów:</h2>
+<ul>
+    <li th:each="recipe : ${recipes}">
+        <h3 th:text="${recipe.title}">Nazwa przepisu</h3>
+        <img th:src="${recipe.image}" alt="Obraz przepisu" />
+        <p>ID przepisu: <span th:text="${recipe.id}"></span></p>
+    </li>
+</ul>
+</body>
+</html>
