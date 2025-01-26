@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Połączenie z plikiem CSS -->
+</head>
+<body>
+<header class="header">
+    <h1>Available Recipes</h1>
+</header>
+
+<main class="main-content">
+    <!-- Lista przepisów -->
+    <section class="recipe-list">
+        <h2>Recipes</h2>
+        <!-- Iteracja przez listę przepisów -->
+        <div th:each="recipe : ${recipes}" class="recipe-card">
+            <img th:src="${recipe.image}" alt="Recipe Image">
+            <h3 th:text="${recipe.title}"></h3>
+            <p>Ready in: <span th:text="${recipe.readyInMinutes}"></span> minutes</p>
+            <p>Servings: <span th:text="${recipe.servings}"></span></p>
+            <button class="btn">View Recipe</button>
+        </div>
+    </section>
+</main>
+
+<!-- Stopka -->
+<footer class="footer">
+    <p>&copy; 2025 My Recipes App. All rights reserved.</p>
+</footer>
+</body>
+</html>

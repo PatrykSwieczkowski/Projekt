@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Recipes App</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Połączenie z plikiem CSS -->
+</head>
+<body>
+<header class="header">
+    <h1>My Recipes App</h1>
+    <nav class="navbar">
+        <a href="#">Home</a>
+        <a href="#">Recipes</a>
+        <a href="#">Add Recipe</a>
+        <a href="#">About</a>
+    </nav>
+</header>
+
+<main class="main-content">
+    <section class="recipe-list">
+        <h2>Available Recipes</h2>
+        <div class="recipe-card">
+            <img src="https://via.placeholder.com/150" alt="Recipe Image">
+            <h3>Recipe Title</h3>
+            <p>Ready in: 30 minutes</p>
+            <p>Servings: 4</p>
+            <button class="btn">View Recipe</button>
+        </div>
+
+        <!-- Możesz powielić ten blok dla innych przepisów -->
+        <div class="recipe-card">
+            <img src="https://via.placeholder.com/150" alt="Recipe Image">
+            <h3>Another Recipe</h3>
+            <p>Ready in: 20 minutes</p>
+            <p>Servings: 2</p>
+            <button class="btn">View Recipe</button>
+        </div>
+    </section>
+
+    <!-- Sekcja dodawania przepisu -->
+    <section class="add-recipe-form">
+        <h2>Add a New Recipe</h2>
+        <form action="/add-recipe" method="post">
+            <label for="title">Recipe Title:</label><br>
+            <input type="text" id="title" name="title" required><br>
+
+            <label for="readyInMinutes">Ready in Minutes:</label><br>
+            <input type="number" id="readyInMinutes" name="readyInMinutes" required><br>
+
+            <label for="servings">Servings:</label><br>
+            <input type="number" id="servings" name="servings" required><br>
+
+            <label for="summary">Summary:</label><br>
+            <textarea id="summary" name="summary" rows="4"></textarea><br>
+
+            <button type="submit" class="btn">Add Recipe</button>
+        </form>
+    </section>
+</main>
+
+<!-- Stopka -->
+<footer class="footer">
+    <p>&copy; 2025 My Recipes App. All rights reserved.</p>
+</footer>
+</body>
+</html>
