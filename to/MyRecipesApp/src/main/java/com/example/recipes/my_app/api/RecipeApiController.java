@@ -1,6 +1,5 @@
 package com.example.recipes.my_app.api;
 
-
 import com.example.recipes.my_app.dto.NutrientRecipeDTO;
 import com.example.recipes.my_app.dto.SummaryRecipeDTO;
 import com.example.recipes.my_app.model.Recipe;
@@ -9,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 
 @RestController
 @RequestMapping("api/recipes")
@@ -22,7 +20,6 @@ public class RecipeApiController {
         this.recipeApiService = recipeApiService;
     }
 
-
     @GetMapping("findByIngredients/{ingredients}")
     public ResponseEntity<List<Recipe>> findRecipesByIngredients(@PathVariable List<String> ingredients,
                                                                  @RequestParam(defaultValue = "5") int number) {
@@ -33,18 +30,6 @@ public class RecipeApiController {
         return ResponseEntity.ok(recipes);
     }
 
-
-//    @GetMapping("findByIngredients/{ingredients}")
-//    public String findRecipesByIngredients(@PathVariable List<String> ingredients,
-//                                           @RequestParam(defaultValue = "5") int number,
-//                                           Model model) {
-//        List<Recipe> recipes = recipeService.findRecipesByIngredients(ingredients, number);
-//        model.addAttribute("recipes", recipes);
-//        model.addAttribute("ingredients", String.join(", ", ingredients));
-//        return "recipesByIngredients"; // Widok HTML
-//    }
-
-
     @GetMapping("/random")
     public ResponseEntity<List<Recipe>> getRandomRecipes(@RequestParam(defaultValue = "1") int number,
                                                          @RequestParam(required = false) String includeTags,
@@ -52,8 +37,6 @@ public class RecipeApiController {
         List<Recipe> recipes = recipeApiService.getRandomRecipes(number, includeTags, excludeTags);
         return ResponseEntity.ok(recipes);
     }
-
-
 
     @GetMapping("/search/{query}")
     public ResponseEntity<List<SummaryRecipeDTO>> searchRecipes(@PathVariable String query,
@@ -63,7 +46,6 @@ public class RecipeApiController {
         return ResponseEntity.ok(recipes);
     }
 
-
     @GetMapping("/findByCalories/{calories}")
     public ResponseEntity<List<NutrientRecipeDTO>> findRecipesByCalories(@PathVariable int calories,
                                                                          @RequestParam(required = false) Integer carbs,
@@ -71,40 +53,4 @@ public class RecipeApiController {
         List<NutrientRecipeDTO> recipes = recipeApiService.findByCalories(calories, carbs, number);
         return ResponseEntity.ok(recipes);
     }
-
-
-
-
-
-
-//    @GetMapping("/search/{query}")
-//    public String searchRecipes(@PathVariable String query,
-//                                @RequestParam(defaultValue = "1") int number,
-//                                @RequestParam(required = false) Integer maxFat,
-//                                Model model) {
-//        List<Recipe> recipes = recipeService.searchRecipes(query, number, maxFat);
-//        model.addAttribute("recipes", recipes);  // Dodajemy listę przepisów do modelu
-//        model.addAttribute("query", query);      // Dodajemy wyszukiwaną frazę do modelu
-//        return "searchResults";  // Widok HTML
-//    }
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

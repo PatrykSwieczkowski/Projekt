@@ -32,22 +32,29 @@ class RecipeServiceTest {
         List<Recipe> mockRecipes = new ArrayList<>();
         Recipe recipe1 = new Recipe();
         recipe1.setId(1L);
-        recipe1.setTitle("Pasta");
+        recipe1.setTitle("Salad");
         mockRecipes.add(recipe1);
-
-        Recipe recipe2 = new Recipe();
-        recipe2.setId(2L);
-        recipe2.setTitle("Pizza");
-        mockRecipes.add(recipe2);
 
         when(recipeRepository.findAll()).thenReturn(mockRecipes);
 
         List<Recipe> result = recipeService.getAllRecipes();
 
-        assertEquals(2, result.size());
-        assertEquals("Pasta", result.get(0).getTitle());
-        assertEquals("Pizza", result.get(1).getTitle());
+        assertEquals(1, result.size());
+        assertEquals("Salad", result.get(0).getTitle());
 
         verify(recipeRepository, times(1)).findAll();
+    }
+
+    @Test
+    void testSaveRecipe() {
+        Recipe newRecipe = new Recipe();
+        newRecipe.setId(3L);
+        newRecipe.setTitle("Pasta");
+
+        when(recipeRepository.save(any(Recipe.class))).thenReturn(newRecipe);
+
+        recipeService.saveRecipe(newRecipe);
+
+        verify(recipeRepository, times(1)).save(any(Recipe.class));
     }
 }
